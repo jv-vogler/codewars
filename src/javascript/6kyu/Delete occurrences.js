@@ -1,5 +1,6 @@
 /* 
 Enough is enough!
+
 Alice and Bob were on a holiday. Both of them took many pictures of the places they've been, and now they want to show Charlie their entire collection. However, Charlie doesn't like these sessions, since the motif usually repeats. He isn't fond of seeing the Eiffel tower 40 times.
 He tells them that he will only sit for the session if they show the same motif at most N times. Luckily, Alice and Bob are able to encode the motif as a number. Can you help them to remove numbers such that their list contains each number only up to N times, without changing the order?
 
@@ -9,6 +10,23 @@ For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], y
 With list [20,37,20,21] and number 1, the result would be [20,37,21].
 */
 
-function deleteNth(arr,n){
-  // ...
+function deleteNth(arr, n) {
+  const result = []
+  const numbers = {}
+
+  for (const num of arr) {
+    if (!numbers[num]) {
+      numbers[num] = 1
+      result.push(num)
+      continue
+    }
+
+    if (numbers[num] < n) {
+      numbers[num] += 1
+      result.push(num)
+      continue
+    }
+  }
+
+  return result
 }
